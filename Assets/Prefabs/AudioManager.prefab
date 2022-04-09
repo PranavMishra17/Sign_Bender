@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5960336579409740346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5960336579409740348}
+  - component: {fileID: 5960336579409740347}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5960336579409740348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960336579409740346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.28701, y: 2.4912245, z: -24.36762}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5960336579409740347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5960336579409740346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50840a30a0a1d404da9e15e73d73bc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Beepbeep
+    clip: {fileID: 8300000, guid: 03cbdcc50e637994e8650845a8d1ad5a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Buttonclick
+    clip: {fileID: 8300000, guid: ebe549071c7c95046b1178846ac9879d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Dronemove
+    clip: {fileID: 8300000, guid: 49f62f4708dfd56478212ef01c621edb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Dysambience
+    clip: {fileID: 8300000, guid: df564c1df1cb0b24f88986de83928f96, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Footsteps
+    clip: {fileID: 8300000, guid: d25cd4470eda8994da0560ee48497ffe, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Healthgain
+    clip: {fileID: 8300000, guid: 9ba82661e90e4ba43bd9998fce67112c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Enemyattack
+    clip: {fileID: 8300000, guid: 1d06c43c5274d834abb5a0ac00225391, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Jrmovement
+    clip: {fileID: 8300000, guid: cfdbf8da44498944e9652ac799f92f17, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Jump
+    clip: {fileID: 8300000, guid: e97b4bc46e0f025479a4bd1622bde6f6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Landing
+    clip: {fileID: 8300000, guid: 8629a0328eb65ef4aad2184682d4984e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MenuMusic
+    clip: {fileID: 8300000, guid: 321d9457227ef4b46a3c4054241d4eb3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Normalambience
+    clip: {fileID: 8300000, guid: 6fcf5f06f15afd64cb775aa8fd769aaa, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Revive
+    clip: {fileID: 8300000, guid: 3628c0ebcf4d4124298e3a2c51ebf54b, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    loop: 0
+  - name: Robotdeath
+    clip: {fileID: 8300000, guid: 08885e44831adc0418d515c4be1876e8, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+    loop: 0
+  - name: Spiderbite
+    clip: {fileID: 8300000, guid: eac7a15ef30f346439ba06e721650886, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Firespell
+    clip: {fileID: 8300000, guid: 5af373de946a5eb4a9cf50bd603c512a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 8d4e6ea1eb5c013439cad8e3bcc24d25, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gettinghit
+    clip: {fileID: 8300000, guid: 968805938f8e5ef4ab10999cfe751ee6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: RSphereRoll
+    clip: {fileID: 8300000, guid: 968805938f8e5ef4ab10999cfe751ee6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: TitleMusic
+    clip: {fileID: 8300000, guid: 8515a20238437e641a68110ee35c4916, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: AmbienceSecond
+    clip: {fileID: 8300000, guid: df564c1df1cb0b24f88986de83928f96, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gettinghit
+    clip: {fileID: 8300000, guid: 968805938f8e5ef4ab10999cfe751ee6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
