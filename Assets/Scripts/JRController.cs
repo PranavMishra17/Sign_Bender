@@ -19,6 +19,8 @@ public class JRController : MonoBehaviour
     public float period = 4f;
     public float awarenessRange = 50f;
     public float attackRange = 30f;
+    public float attackRangeyplus = 2f;
+    public float attackRangeyminus = -2f;
     public float attackpoint = 15f;
     bool isShoottcouritine = false;
 
@@ -40,10 +42,19 @@ public class JRController : MonoBehaviour
         if (Vector3.Distance(transform.position, playerTransform.position) < awarenessRange)
         {
             LookAtPlayer();
-            if (Vector3.Distance(transform.position, playerTransform.position) < attackRange)
+            bool okToAttack ;
+            
+            if (Vector3.Distance(transform.position, playerTransform.position) < attackRange )
             {
-                MoveTowardsPlayer();
+                float dis = (transform.position.y - playerTransform.position.y);
+                if (dis*dis < 4) okToAttack = true;
+                else okToAttack = false;
 
+                if (okToAttack)
+                {
+                    MoveTowardsPlayer();
+                }
+                
             }
         }
         else { anim.SetTrigger("Idle"); audio.Stop(); }

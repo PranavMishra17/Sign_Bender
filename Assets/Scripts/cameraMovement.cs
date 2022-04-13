@@ -59,7 +59,7 @@ public class cameraMovement : MonoBehaviour
 
     public CameraBOB cameraBob;
     public PlayerInput playerInput;
-
+    public Vector3 lastplayerPos = new Vector3(0,0,0);
     public AudioClip playerMove;
     public AudioClip playerJump;
     AudioSource audio;
@@ -79,7 +79,7 @@ public class cameraMovement : MonoBehaviour
         moveInputDeadZone = Mathf.Pow(Screen.height / moveInputDeadZone, 2);
         //moveInputSprintZone = Screen.height * 0.4f;
         moveInputSprintZone = Mathf.Pow(Screen.height / 3, 2);
-
+        cameraSpeed = camspeedSlider.value;
         playerInput = GetComponent<PlayerInput>();
     }
 
@@ -109,7 +109,19 @@ public class cameraMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+       // Debug.Log("Player Pos Last: "+ lastplayerPos);
         grounded = Physics.CheckSphere(groundCheck.position, groundcheckradius, groundLayers);
+        if (grounded)
+        {
+           // Debug.Log(" Grounded ");
+            lastplayerPos = gameObject.transform.position;
+            StopCoroutine("JumpTimer");
+        }
+        else
+        {
+            StartCoroutine("JumpTimer");
+          //  Debug.Log("Not Grounded ");
+        }
     }
 
     void GetTouchInput()
@@ -329,7 +341,15 @@ public class cameraMovement : MonoBehaviour
         }
         
     }
-
+    IEnumerator JumpTimer()
+    {
+        yield return new WaitForSeconds(5);
+        if (!grounded)
+        {
+            gameObject.transform.position = lastplayerPos;
+            
+        }
+    }
     public void CameraSpeedSlider()
     {
         cameraSpeed = camspeedSlider.value; 
