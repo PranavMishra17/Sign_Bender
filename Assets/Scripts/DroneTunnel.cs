@@ -6,6 +6,7 @@ public class DroneTunnel : MonoBehaviour
 {
     public GameObject drone;
     public Transform dronepoint;
+    public Transform droneY;
     public DroneController dctrl;
     public float setHeight = 0f;
     private bool used;
@@ -15,6 +16,7 @@ public class DroneTunnel : MonoBehaviour
     void Start()
     {
         used = true;
+        setHeight = droneY.position.y;
     }
 
     // Update is called once per frame
@@ -35,6 +37,8 @@ public class DroneTunnel : MonoBehaviour
         {
             var newDrone = Instantiate(drone, dronepoint.transform.position, Quaternion.identity) as GameObject;
             newDrone.GetComponent<DroneController>().height = setHeight;
+            newDrone.GetComponent<DroneController>().awarenessRange = 120f;
+            newDrone.GetComponent<DroneController>().attackRange = 100f;
             Debug.Log("In here");
             //he.canbeHit = true;
         }

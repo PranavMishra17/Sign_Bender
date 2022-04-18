@@ -35,7 +35,7 @@ public class HealthEnemy : MonoBehaviour
     {
         if (jr.position.y < -7f)
         {
-            ReduceHealth();
+            //ReduceHealth();
         }
     }
     public void ReduceHealth()

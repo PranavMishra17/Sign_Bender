@@ -19,6 +19,7 @@ public class BossController : MonoBehaviour
     public bool attackingplayer = true;
     public bool setplayerloc = true;
     public bool canbeshot = false;
+    public bool activate = false;
     bool returnpos;
     public GameObject oposGO;
     public Health playerhealth;
@@ -50,42 +51,56 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, playerTransform.position) < awarenessRange && attackingplayer)
+        if (activate)
         {
-            LookAtPlayer();
-            anim.SetBool("Walk_Anim", true);
-            if (Vector3.Distance(transform.position, playerTransform.position) < attackRange)
+            if (anim.GetBool("Open_Anim")  == false)
             {
-                anim.SetBool("Walk_Anim", false);
-                anim.SetBool("Roll_Anim", true);
-                StartCoroutine("AttackPlayerCall");
+                anim.SetBool("Open_Anim", true);
             }
+           
+            if (Vector3.Distance(transform.position, playerTransform.position) < awarenessRange && attackingplayer)
+            {
+                LookAtPlayer();
+                anim.SetBool("Walk_Anim", true);
+                if (Vector3.Distance(transform.position, playerTransform.position) < attackRange)
+                {
+                    anim.SetBool("Walk_Anim", false);
+                    anim.SetBool("Roll_Anim", true);
+                    StartCoroutine("AttackPlayerCall");
+                }
+            }
+            //CheckKey();
+            //gameObject.transform.eulerAngles = rot;
+            if (Vector3.Distance(transform.position, playerTransform.position) < attackpoint)
+            {
+                returnpos = true;
+
+                if (attackingplayer)
+                {
+                    attackingplayer = false;
+                    playerhealth.ReduceHealth();
+                }
+
+            }
+            if (returnpos) ReturnToOPos();
         }
-        //CheckKey();
-        gameObject.transform.eulerAngles = rot;
-        if (Vector3.Distance(transform.position, playerTransform.position) < attackpoint)
+        else
         {
-            returnpos = true;
-            
-            if (attackingplayer)
-            {
-                attackingplayer = false;
-                playerhealth.ReduceHealth();
-            }
-            
+            anim.SetBool("Open_Anim", false);
         }
-        if (returnpos) ReturnToOPos();
+        
     }
 
     private void ReturnToOPos()
     {
+        canbeshot = true;
         //audio.PlayOneShot(RSOpen);
         anim.SetBool("Roll_Anim", false);
         anim.SetBool("Walk_Anim", true);
         audio.PlayOneShot(RSWalk);
         float step = SphereAttackSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, transform.position.y, transform.position.z), oposGO.transform.position, step);
-        if (new Vector3(transform.position.x, transform.position.y, transform.position.z) == oposGO.transform.position) { returnpos = false; attackingplayer = true; setplayerloc = true; }
+        if (new Vector3(transform.position.x, transform.position.y, transform.position.z) == oposGO.transform.position) { returnpos = false; attackingplayer = true; setplayerloc = true; canbeshot = false; }
     }
 
     public void LookAtPlayer()

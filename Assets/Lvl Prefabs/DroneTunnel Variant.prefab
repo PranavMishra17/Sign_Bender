@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7058676570018678953, guid: f2259c9456283204aada2472a882e93b, type: 3}
       propertyPath: m_Name
-      value: DroneTunnel
+      value: DroneTunnel Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7058676570018678958, guid: f2259c9456283204aada2472a882e93b, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7058676570274322327, guid: f2259c9456283204aada2472a882e93b, type: 3}
+      propertyPath: droneY
+      value: 
+      objectReference: {fileID: 1500245705870362704}
+    - target: {fileID: 7058676571202744187, guid: f2259c9456283204aada2472a882e93b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.44
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2259c9456283204aada2472a882e93b, type: 3}
+--- !u!4 &1500245705870362704 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7058676571202744187, guid: f2259c9456283204aada2472a882e93b, type: 3}
+  m_PrefabInstance: {fileID: 8441018335882913579}
+  m_PrefabAsset: {fileID: 0}

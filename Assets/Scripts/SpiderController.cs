@@ -21,6 +21,7 @@ public class SpiderController : MonoBehaviour
     public float attackRange = 30f;
     public float attackpoint = 15f;
     public Health playerHealth;
+    private bool okToAttack = false;
 
     public AudioClip spiderAttack;
     AudioSource audio;
@@ -40,7 +41,14 @@ public class SpiderController : MonoBehaviour
             LookAtPlayer();
             if (Vector3.Distance(transform.position, playerTransform.position) < attackRange)
             {
-                MoveTowardsPlayer();
+                float dis = (transform.position.y - playerTransform.position.y);
+                if (dis * dis < 4) okToAttack = true;
+                else okToAttack = false;
+
+                if (okToAttack)
+                {
+                    MoveTowardsPlayer();
+                }
             }
         }
         else anim.SetTrigger("Idle");

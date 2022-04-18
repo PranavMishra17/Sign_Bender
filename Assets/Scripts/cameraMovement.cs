@@ -60,6 +60,7 @@ public class cameraMovement : MonoBehaviour
     public CameraBOB cameraBob;
     public PlayerInput playerInput;
     public Vector3 lastplayerPos = new Vector3(0,0,0);
+    public Vector3 lastSwanPos = new Vector3(0, 0, 0);
     public AudioClip playerMove;
     public AudioClip playerJump;
     AudioSource audio;

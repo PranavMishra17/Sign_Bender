@@ -36,7 +36,6 @@ public class DoorOpenCheck : MonoBehaviour
             if (enemiesRemaining.Length == 0)
             {
                 OpenGate();
-                
             }
         }
         

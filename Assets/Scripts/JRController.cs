@@ -27,6 +27,11 @@ public class JRController : MonoBehaviour
     public AudioClip JRMove;
     public AudioClip JRShoot;
     AudioSource audio;
+    public bool statJR = false;
+    public Vector3 halfDimensions;
+    private Vector3 boxCenter;
+    public Transform boxcenter;
+    public LayerMask layerMask;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +39,7 @@ public class JRController : MonoBehaviour
         playerTransform = GameObject.Find("Player").transform;
         audio = GetComponent<AudioSource>();
         audio.clip = JRMove;
+        boxCenter = boxcenter.transform.position;
     }
 
     // Update is called once per frame
@@ -59,6 +65,29 @@ public class JRController : MonoBehaviour
         }
         else { anim.SetTrigger("Idle"); audio.Stop(); }
 
+        if (statJR)
+        {
+            //OnDrawGizmos();
+            Collider[] playerIn = Physics.OverlapBox(boxCenter, halfDimensions, Quaternion.identity, layerMask);
+            //Debug.Log("player in :" + playerIn.Length);
+            if (playerIn.Length > 0)
+            {
+                LookAtPlayer();
+                //Debug.Log("Shoot trigerred" );
+                shootAtPlayer = true;
+                moveTowardsPlayer = false;
+                anim.SetTrigger("Attack");
+                if (Time.time > nextActionTime)
+                {
+                    nextActionTime += period;
+                    Shoot();
+                }
+            }
+            else
+            {
+                anim.SetTrigger("Idle");
+            }
+        }
     }
     public void LookAtPlayer()
     {
@@ -67,6 +96,10 @@ public class JRController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1 * Time.deltaTime);
         Vector3 ShootPos = new Vector3();
         ShootPos = transform.position;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(boxCenter, halfDimensions);
     }
     public void MoveTowardsPlayer()
     {
@@ -118,7 +151,7 @@ public class JRController : MonoBehaviour
         if (!isShoottcouritine)
         {
             isShoottcouritine = true;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(period);
             audio.PlayOneShot(JRShoot);
             var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.identity) as GameObject;
             projectileObj.GetComponent<Rigidbody>().velocity = (playerTransform.position - firePoint.position).normalized * projectileSpeed;
