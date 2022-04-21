@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c5d7ece5531f3c94c91700f7a4460bc0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - SF Grunge Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e37b6bccd5d8b154682f83bc2d85ed6d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

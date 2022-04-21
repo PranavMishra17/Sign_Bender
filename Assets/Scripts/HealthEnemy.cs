@@ -22,12 +22,18 @@ public class HealthEnemy : MonoBehaviour
 
     public bool canbeHit = true;
 
+    public Text scoreCounter;
+    //public int score;
+    public FPSShooter fps;
+
     // Start is called before the first frame update
     void Start()
     {
+        fps = GameObject.Find("Player").GetComponent<FPSShooter>();
         audio = GetComponent<AudioSource>();
         jr = GetComponent<Transform>();
         healthBar.value = 1f;
+        scoreCounter = GameObject.FindGameObjectWithTag("ScoreCounter").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -60,6 +66,7 @@ public class HealthEnemy : MonoBehaviour
     }
     public void TimetoDie()
     {
+       // score.ToString() = scoreCounter.text;
         audio.PlayOneShot(JRDeath);
         rb.useGravity = true;
        // Destroy(go, timetodie);
@@ -89,5 +96,6 @@ public class HealthEnemy : MonoBehaviour
         audi.Play();
         Destroy(healthheff, 3f);
         Destroy(go, 4f);
+        fps.incScore(10);
     }
 }

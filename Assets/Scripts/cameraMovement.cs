@@ -359,6 +359,14 @@ public class cameraMovement : MonoBehaviour
     {
         camholder.GetComponent<AudioSource>().volume = volumeSlider.value;
     }
+    public void GotoMenu()
+    {
+        SceneManager.LoadScene("HomeMenu");
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     public static bool IsPointerOverGameObject()
     {
 

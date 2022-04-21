@@ -28,7 +28,7 @@ public class MenuBossCtrl : MonoBehaviour
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
-        gameObject.transform.eulerAngles = rot;
+        //gameObject.transform.eulerAngles = rot;
     }
     void Start()
     {

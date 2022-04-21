@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpiderController : MonoBehaviour
 {
@@ -25,12 +26,18 @@ public class SpiderController : MonoBehaviour
 
     public AudioClip spiderAttack;
     AudioSource audio;
+    public Text scoreCounter;
+    //public int score;
+    public FPSShooter fps;
 
     // Start is called before the first frame update
     void Start()
     {
         playerTransform = GameObject.Find("Player").transform;
         audio = GetComponent<AudioSource>();
+
+        fps = GameObject.Find("Player").GetComponent<FPSShooter>();
+        scoreCounter = GameObject.FindGameObjectWithTag("ScoreCounter").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -132,6 +139,7 @@ public class SpiderController : MonoBehaviour
             attackpoint = 0;
             anim.SetTrigger("Death");
             Destroy(Spider, 1.5f);
+            fps.incScore(5);
         }
     }
 }

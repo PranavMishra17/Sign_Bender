@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 916394c5021f6254d914c271d6d8325f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - SF Toontime B
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 905156e6ff69b8542935dacd99ef8fab, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

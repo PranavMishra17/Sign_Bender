@@ -18,12 +18,18 @@ public class HealthDrone : MonoBehaviour
     AudioSource audio;
     public DroneController dctrl;
 
+    public Text scoreCounter;
+    //public int score;
+    public FPSShooter fps;
+
     // Start is called before the first frame update
     void Start()
     {
         dctrl = gameObject.GetComponent<DroneController>();
         audio = GetComponent<AudioSource>();
         healthBar.value = 1f;
+        fps = GameObject.Find("Player").GetComponent<FPSShooter>();
+        scoreCounter = GameObject.FindGameObjectWithTag("ScoreCounter").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -75,5 +81,6 @@ public class HealthDrone : MonoBehaviour
         audi.Play();
         Destroy(healthheff, 3f);
         Destroy(go, 4f);
+        fps.incScore(15);
     }
 }

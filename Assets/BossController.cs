@@ -29,23 +29,22 @@ public class BossController : MonoBehaviour
     public AudioClip RSOpen;
     public AudioClip RSWalk;
     public AudioClip RSDestroy;
-    AudioSource audio;
+    public AudioSource audioBoss;
 
     // Use this for initialization
     void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
-        gameObject.transform.eulerAngles = rot;
+        //gameObject.transform.eulerAngles = rot;
     }
     void Start()
     {
         setplayerloc = true;
-        audio = GetComponent<AudioSource>();
-
+        //audio = GetComponent<AudioSource>();
+        //audio = gameObject.GetComponent<AudioSource>();
         playerTransform = GameObject.Find("Player").transform;
-        audio = GetComponent<AudioSource>();
-        audio.clip = RSWalk;
-        // audio.Play();
+        //audio = GetComponent<AudioSource>();
+        //audioBoss.clip = RSWalk;
     }
 
     // Update is called once per frame
@@ -97,7 +96,7 @@ public class BossController : MonoBehaviour
         //audio.PlayOneShot(RSOpen);
         anim.SetBool("Roll_Anim", false);
         anim.SetBool("Walk_Anim", true);
-        audio.PlayOneShot(RSWalk);
+       // audioBoss.PlayOneShot(RSWalk);
         float step = SphereAttackSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, transform.position.y, transform.position.z), oposGO.transform.position, step);
         if (new Vector3(transform.position.x, transform.position.y, transform.position.z) == oposGO.transform.position) { returnpos = false; attackingplayer = true; setplayerloc = true; canbeshot = false; }
@@ -127,7 +126,7 @@ public class BossController : MonoBehaviour
     }
     public void AttackPlayer()
     {
-        audio.PlayOneShot(RSRoll);
+        //audioBoss.PlayOneShot(RSRoll);
         //attackingplayer = false;
         float step = SphereAttackSpeed * Time.deltaTime;
         SetPlayerlocation();
@@ -141,5 +140,9 @@ public class BossController : MonoBehaviour
         returnpos = true;
         attackingplayer = false;
     }
-
+    public void ActivateToggle()
+    {
+        if (activate) activate = false;
+        else activate = true;
+    }
 }

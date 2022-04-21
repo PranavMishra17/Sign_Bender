@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8b522e4088a10614297757d7fc0b7170
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - SF Juggernaut Condensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b6c72dfcfc05ffd4192904771c7c87c9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -13,6 +13,7 @@ TagManager:
   - Health
   - Tower
   - Boss
+  - ScoreCounter
   layers:
   - Default
   - TransparentFX

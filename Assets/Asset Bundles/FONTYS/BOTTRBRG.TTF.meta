@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f987b7ebba8a19042a9aa21493a62f40
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - BottleRocket BB
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 02d22a4966dc3f343971e98bbd129b86, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

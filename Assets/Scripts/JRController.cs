@@ -67,7 +67,7 @@ public class JRController : MonoBehaviour
 
         if (statJR)
         {
-            //OnDrawGizmos();
+            OnDrawGizmos();
             Collider[] playerIn = Physics.OverlapBox(boxCenter, halfDimensions, Quaternion.identity, layerMask);
             //Debug.Log("player in :" + playerIn.Length);
             if (playerIn.Length > 0)

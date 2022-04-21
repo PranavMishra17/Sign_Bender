@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 97ed6a6f9dadb784c8f90771f623c232
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Pussycat
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 24d767063af6c1d41959774390cc5a90, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
