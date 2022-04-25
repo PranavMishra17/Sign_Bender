@@ -15,7 +15,6 @@ public class DoorOpenCheck : MonoBehaviour
 
     void Start()
     {
-       
         boxCenter = boxcenter.transform.position;
     }
 

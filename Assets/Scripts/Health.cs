@@ -45,6 +45,13 @@ public class Health : MonoBehaviour
         fps.Death();
         cm.isAlive = false;
     }
+    public void ReviveSequence()
+    {
+        cm.isAlive = true;
+        health = 1;
+        fps.Revive();
+       
+    }
     public void ReduceHealth()
     {
         health -= 0.21f;
@@ -60,11 +67,9 @@ public class Health : MonoBehaviour
     }
     public void ReducePartialHealth()
     {
-        audio.PlayOneShot(playerHit);
-        if (inWater) InvokeRepeating("ReduceHealth", 0.1f, 3f);
-        else CancelInvoke("ReduceHealth");
-        if (health < 0) DeathSequence();
+        health -= 0.10f;
         healthSlider.value = health;
+        if (health < 0) { DeathSequence(); }
     }
     public void ThrowPlayer()
     {
@@ -77,12 +82,6 @@ public class Health : MonoBehaviour
     public void OnCollisionEnter (Collision co)
     {
 
-        if (co.gameObject.tag == "Water")
-        {
-            inWater = true;
-            if (inWater) InvokeRepeating("ReduceHealth", 1.0f, 3f);
-        }
-        // If the object we hit is the enemy
 
         if (co.gameObject.tag == "Bullet")
         {
@@ -103,7 +102,6 @@ public class Health : MonoBehaviour
         //Debug.Log("Tag of obj " + co.tag);
         if (co.tag == "Cloud")
         {
-            inWater = true;
             audio.PlayOneShot(playerHit);
             ReducePartialHealth();
         }
@@ -115,11 +113,6 @@ public class Health : MonoBehaviour
     }
     public void OnTriggerExit(Collider co)
     {
-        //Debug.Log("Tag of obj " + co.tag);
-        if (co.tag == "Cloud")
-        {
-            inWater = false;
-            ReducePartialHealth();
-        }
+      
     }
 }

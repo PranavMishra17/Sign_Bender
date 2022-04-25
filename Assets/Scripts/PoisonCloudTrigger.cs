@@ -24,17 +24,12 @@ public class PoisonCloudTrigger : MonoBehaviour
        //Debug.Log("Tag of obj " + co.tag);
         if (co.tag == "Player")
         {
-            hlth.inWater = true;
+           // hlth.inWater = true;
             hlth.ReducePartialHealth();
         }
     }
     public void OnTriggerExit(Collider co)
     {
-        //Debug.Log("Tag of obj " + co.tag);
-        if (co.tag == "Player")
-        {
-            hlth.inWater = false;
-            hlth.ReducePartialHealth();
-        }
+        
     }
 }

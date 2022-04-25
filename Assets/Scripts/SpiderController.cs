@@ -97,7 +97,8 @@ public class SpiderController : MonoBehaviour
     {
         shootAtPlayer = true;
         moveTowardsPlayer = false;
-        InvokeRepeating("Shoot", 0.2f, 3f);
+        Shoot();
+        Debug.Log("Shoot prep called ");
     }
     public void ShootEndPrep()
     {
@@ -113,20 +114,8 @@ public class SpiderController : MonoBehaviour
             anim.SetTrigger("Attack");
             var muzzleObj = Instantiate(muzzle, firePoint.position, Quaternion.identity) as GameObject;
             Destroy(muzzleObj, 3);
-            
-            //anim.SetTrigger("Idle");
+            Debug.Log("Shooting spider web ");
 
-
-            //StartCoroutine("Shoottt");
-            /*
-            var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.identity) as GameObject;
-            projectileObj.GetComponent<Rigidbody>().velocity = (playerTransform.position - firePoint.position).normalized * projectileSpeed;
-            anim.SetTrigger("Idle");
-            //iTween.PunchPosition(projectileObj, new Vector3(Random.Range(arcRange, arcRange), Random.Range(arcRange, arcRange), 0), Random.Range(0.5f, 2));
-
-            Destroy(projectileObj, 5f);
-            var muzzleObj = Instantiate(muzzle, firePoint.position, Quaternion.identity) as GameObject;
-            Destroy(muzzleObj, 2);*/
         }
     }
     private void OnCollisionEnter(Collision co)

@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6703606247923627759, guid: bc5909b556acbcc4db83d48afc921b6d, type: 3}
       propertyPath: m_Name
-      value: spider (1)
+      value: spider (1) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6703606247923627759, guid: bc5909b556acbcc4db83d48afc921b6d, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6703606247923657423, guid: bc5909b556acbcc4db83d48afc921b6d, type: 3}
       propertyPath: m_RootOrder

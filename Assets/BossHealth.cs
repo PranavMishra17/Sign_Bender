@@ -8,12 +8,17 @@ public class BossHealth : MonoBehaviour
     public float healthEnemy = 500f;
     public float timetodie = 2f;
     public Slider healthBar;
+    public GameObject BossDeathEff;
+    public GameObject GameFinishedPanel;
     //public Animator anim;
     public AudioClip BossDeath;
     public AudioClip explosion;
     AudioSource audio;
     public BossController bctrl;
     Animator anim;
+    public UIController uic;
+    public Text scoretext;
+    public FPSShooter fps;
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +32,19 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+        if (healthEnemy < 10f)
+        {
+            Debug.Log("Time to die boss");
+            TimetoDie();
+        }
     }
     public void ReduceHealth()
     {
         healthEnemy -= 40f;
         healthBar.value -= 40f;
-        if (healthEnemy < 10f)
+        if (healthEnemy < 20f)
         {
+            Debug.Log("Time to die boss");
             TimetoDie();
         }
     }
@@ -53,6 +62,9 @@ public class BossHealth : MonoBehaviour
         audio.PlayOneShot(BossDeath);
 
         Destroy(healthBar, timetodie);
-
+        var deathEff = Instantiate(BossDeathEff, gameObject.transform.position, Quaternion.identity) as GameObject;
+        Destroy(gameObject, 2f);
+        GameFinishedPanel.SetActive(true);
+        uic.postToLeaderboard(fps.score);
     }
 }

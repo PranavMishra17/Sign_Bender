@@ -17,8 +17,9 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AuthenticateUser();
         mainText.text = "";
+        //AuthenticateUser();
+        
     }
 
     // Update is called once per frame
@@ -59,13 +60,27 @@ public class UIController : MonoBehaviour
             else Debug.Log("Coudn't post to LB");
         });
     }
-    public static void ShowLB()
+    public void ShowLB()
     {
-        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_sign_smash_leaderboard);
+        if (Social.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_sign_smash_leaderboard);
+        }
+        else { AuthenticateUser();
+            PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_sign_smash_leaderboard);
+        }
+            
     }
-    public static void ShowAM()
+    public void ShowAM()
     {
-        PlayGamesPlatform.Instance.ShowAchievementsUI();
+        if (Social.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.ShowAchievementsUI();
+        }
+        else { AuthenticateUser();
+            PlayGamesPlatform.Instance.ShowAchievementsUI();
+        }
+       
     }
     public static void UnlockAM1()
     {
@@ -89,6 +104,13 @@ public class UIController : MonoBehaviour
             mainText.text = "Logging in to Google Play Services";
             StartCoroutine("fadeText");
             AuthenticateUser();
+            if (once)
+            {
+                mainText.text = "We recommend you complete the tutorial first.\nPress Play again if you have already.";
+                StartCoroutine("fadeText");
+                once = false;
+            }
+            else StartCoroutine("loadLevel");
         }
     }
     public void LoadTut()
@@ -102,6 +124,7 @@ public class UIController : MonoBehaviour
             mainText.text = "Logging in to Google Play Services";
             StartCoroutine("fadeText");
             AuthenticateUser();
+            SceneManager.LoadScene("Tutorial");
         }
     }
 

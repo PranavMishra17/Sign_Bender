@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.unity.ads": "3.5.2",
     "com.unity.animation.rigging": "1.0.3",
     "com.unity.cinemachine": "2.7.8",
     "com.unity.collab-proxy": "1.5.7",

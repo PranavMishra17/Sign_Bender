@@ -64,6 +64,8 @@ public class cameraMovement : MonoBehaviour
     public AudioClip playerMove;
     public AudioClip playerJump;
     AudioSource audio;
+    public AudioListener camaudioListner;
+
     bool run = false;
 
     // Start is called before the first frame update
@@ -357,7 +359,9 @@ public class cameraMovement : MonoBehaviour
     }
     public void VolumeSlider()
     {
-        camholder.GetComponent<AudioSource>().volume = volumeSlider.value;
+        //camholder.GetComponent<AudioSource>().volume = volumeSlider.value;
+        //camaudioListner.volume = volumeSlider.value;
+        camaudioListner.GetComponent<Vol>().ChangeVol(volumeSlider.value);
     }
     public void GotoMenu()
     {

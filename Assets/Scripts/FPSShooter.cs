@@ -40,6 +40,7 @@ public class FPSShooter : MonoBehaviour
     public GameObject target;
 
     public LayerMask canBeShot;
+    public LayerMask enemies;
 
     public AudioClip playerShoot;
     public AudioClip playerDeath;
@@ -64,7 +65,12 @@ public class FPSShooter : MonoBehaviour
     {
         shootTrue = true;
     }
-
+    public void IncreaseScoreReward()
+    {
+        score += 20;
+        scoreCounter.text = score.ToString();
+        // add sequence to disable panel
+    }
 
     void Update()
     {
@@ -74,10 +80,7 @@ public class FPSShooter : MonoBehaviour
         {
             Death();
         }
-       // if (player.transform.position.y < lowerlimit)
-       // {
-          //  player.transform.position = swanPos.position;
-       // }
+        //OnDrawGizmosSelected(transform.position, 15f);
     }
     public void Shoot()
     {
@@ -171,20 +174,67 @@ public class FPSShooter : MonoBehaviour
     {
         reticle.SetActive(false);
         bgaudio.Stop();
-        //audio.clip = playerDeath;
         audio.PlayOneShot(playerDeath);
-       // anim.SetTrigger("Death");
-        player_anim.SetTrigger("Death");
+        player_anim.SetBool("Death", true);
         StartCoroutine("Done");
-       
     }
+    public void Revive()
+    {
+        ReviveBomb();
+        deathBool = false;
+        reticle.SetActive(true);
+        bgaudio.Play();
+        audio.PlayOneShot(playerDeath);
+        playerHands.SetActive(true);
+        StartCoroutine("ReviveDone");
+    }
+    public void ReviveBomb()
+    {
+        Vector3 explosionPosition = transform.position;
+        float explosionRadius = 15.0f;
+        Collider[] colliders  = Physics.OverlapSphere(explosionPosition, explosionRadius);
+        
+        foreach (Collider col in colliders)
+        {
+            if (col.gameObject.layer == enemies || col.tag == "Cloud" || col.tag == "Enemy")
+            {
+                Destroy(col.gameObject);
+            }
+        }
+    }
+    private void OnDrawGizmosSelected(Vector3 pos, float size)
+    {
+        Gizmos.color = Color.red;
+     //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+     Gizmos.DrawWireSphere(pos, size);
+    }
+
     IEnumerator Done()
     {
         // suspend execution for 5 seconds
         yield return new WaitForSeconds(2);
-        playerHands.SetActive(false);
-
+        //playerHands.SetActive(false);
         deathPanel.gameObject.GetComponentInChildren<Text>().text = "You Died!";
         deathPanel.SetActive(true);
+    }
+    IEnumerator ReviveDone()
+    {
+        
+        yield return new WaitForSeconds(2);
+        anim.SetTrigger("Revive");
+        player_anim.SetTrigger("Revive");
+        //deathPanel.gameObject.GetComponentInChildren<Text>().text = "You Died!";
+        deathPanel.SetActive(false);
+        player_anim.SetBool("Death", false);
+        StartCoroutine("Extra");
+    }
+    IEnumerator Extra()
+    {
+
+        yield return new WaitForSeconds(4);
+        //anim.SetTrigger("Revive");
+        player_anim.SetTrigger("Idle");
+        //deathPanel.gameObject.GetComponentInChildren<Text>().text = "You Died!";
+        //deathPanel.SetActive(false);
     }
 }
