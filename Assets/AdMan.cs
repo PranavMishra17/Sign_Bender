@@ -49,6 +49,7 @@ public class AdMan : MonoBehaviour
         if (Advertisement.IsReady("Rewarded_Android"))
         {
             Advertisement.Show("Rewarded_Android");
+            Debug.Log("Ad code is Rewarded_Android");
         }
         else
         {
@@ -62,6 +63,7 @@ public class AdMan : MonoBehaviour
         if (Advertisement.IsReady("RewardedRevive"))
         {
             Advertisement.Show("RewardedRevive");
+            Debug.Log("Ad code is RewardedRevive" );
         }
         else
         {
@@ -102,6 +104,7 @@ public class AdMan : MonoBehaviour
     // Implement IUnityAdsListener interface methods:
     public void OnUnityAdsDidFinish(string adCode, ShowResult showResult)
     {
+        Debug.Log("Ad code is  " + adCode);
         if (adCode == "RewardedRevive")
         {
             
@@ -109,15 +112,17 @@ public class AdMan : MonoBehaviour
         if (showResult == ShowResult.Finished)
         {
                 hth.ReviveSequence();
-        }
+                fps.uic.UnlockAM4();
+                Debug.Log("Reward successfull ");
+            }
         else if (showResult == ShowResult.Skipped)
         {
-            // pmmm.ReloadLevel();
-        }
+                Debug.Log("Reward skipped ");
+            }
         else if (showResult == ShowResult.Failed)
         {
-            // pmmm.ReloadLevel();
-        }
+                Debug.Log("Reward error ");
+            }
         }
         else
         {
@@ -125,14 +130,16 @@ public class AdMan : MonoBehaviour
             if (showResult == ShowResult.Finished)
             {
                 fps.IncreaseScoreReward();
+                fps.uic.UnlockAM4();
+                Debug.Log("Reward successfull ");
             }
             else if (showResult == ShowResult.Skipped)
             {
-                // pmmm.ReloadLevel();
+                Debug.Log("Reward skipped ");
             }
             else if (showResult == ShowResult.Failed)
             {
-                // pmmm.ReloadLevel();
+                Debug.Log("Reward error ");
             }
         }
     }

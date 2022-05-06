@@ -129,7 +129,6 @@ public class cameraMovement : MonoBehaviour
 
     void GetTouchInput()
     {
-
         for (int i = 0; i < Input.touchCount; i++)
         {
             //Touch t = Input.GetTouch(i);

@@ -50,16 +50,31 @@ public class FPSShooter : MonoBehaviour
 
     public Text scoreCounter;
     public int score;
-
+    public int deathScore = 0;
+    private string sceneName;
+    Scene currentScene;
     public GameObject deathPanel;
+    public GameObject adBtn1;
+    public GameObject adBtn2;
+
+    public AudioClip pauseMenuMusic;
+
+    public UIController uic;
 
     // Start is called before the first frame update
     private void Start()
     {
-        score = 20;
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+        if (sceneName == "Tutorial")
+        {
+            score = 200;
+        } else score = 20;
+
         audio = GetComponent<AudioSource>();
         swanPos = t1;
         scoreCounter.text = score.ToString();
+        bgaudio.loop = true;
     }
     public void SetShootBool()
     {
@@ -69,7 +84,11 @@ public class FPSShooter : MonoBehaviour
     {
         score += 20;
         scoreCounter.text = score.ToString();
+        deathPanel.SetActive(false);
+        Time.timeScale = 1;
+
         // add sequence to disable panel
+
     }
 
     void Update()
@@ -142,6 +161,8 @@ public class FPSShooter : MonoBehaviour
         {
             deathPanel.gameObject.GetComponentInChildren<Text>().text = "You ran out of energy";
             deathPanel.SetActive(true);
+            adBtn2.SetActive(true);
+            adBtn1.SetActive(false);
         }
     }
 
@@ -172,11 +193,16 @@ public class FPSShooter : MonoBehaviour
 
     public void Death()
     {
+        deathScore++;
         reticle.SetActive(false);
         bgaudio.Stop();
         audio.PlayOneShot(playerDeath);
         player_anim.SetBool("Death", true);
         StartCoroutine("Done");
+        if(deathScore > 10)
+        {
+            uic.UnlockAM3();
+        }
     }
     public void Revive()
     {
@@ -216,6 +242,8 @@ public class FPSShooter : MonoBehaviour
         //playerHands.SetActive(false);
         deathPanel.gameObject.GetComponentInChildren<Text>().text = "You Died!";
         deathPanel.SetActive(true);
+        adBtn2.SetActive(false);
+        adBtn1.SetActive(true);
     }
     IEnumerator ReviveDone()
     {

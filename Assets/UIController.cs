@@ -14,12 +14,30 @@ public class UIController : MonoBehaviour
     public GameObject menuPanel;
     bool once = true;
     public Text mainText;
+    public Slider volumeSlider;
+    public AudioSource audsrc;
+    public AudioClip menumusic;
+    Scene currentscene;
+    string sceneName;
+
     // Start is called before the first frame update
     void Start()
     {
-        mainText.text = "";
-        //AuthenticateUser();
-        
+
+        currentscene = SceneManager.GetActiveScene();
+        sceneName = currentscene.name;
+        if (sceneName == "HomeMenu")
+        {
+            audsrc.clip = menumusic;
+            audsrc.Play();
+            audsrc.loop = true;
+            audsrc.volume = 0.7f;
+        }
+            mainText.text = "";
+        InitializePlayGamesLogin();
+
+
+
     }
 
     // Update is called once per frame
@@ -49,13 +67,34 @@ public class UIController : MonoBehaviour
         }
         );
     }
+    void InitializePlayGamesLogin()
+    {
+        var config = new PlayGamesClientConfiguration.Builder()
+            // Requests an ID token be generated.  
+            // This OAuth token can be used to
+            // identify the player to other services such as Firebase.
+            .RequestIdToken()
+            .Build();
 
-    public void postToLeaderboard(int newScore)
+        PlayGamesPlatform.InitializeInstance(config);
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
+    }
+
+    public void postToLeaderboard(int newScore, int deathScore)
     {
         Social.ReportScore(newScore, GPGSIds.leaderboard_sign_smash_leaderboard, (bool success) => {
             if (success)
             {
                 Debug.Log("Posted to LB");
+                if (deathScore==0)
+                {
+                    UnlockAM1();
+                }
+                else if (deathScore > 9)
+                {
+                    UnlockAM2();
+                }
             }
             else Debug.Log("Coudn't post to LB");
         });
@@ -82,9 +121,25 @@ public class UIController : MonoBehaviour
         }
        
     }
-    public static void UnlockAM1()
+    public void UnlockAM1()
     {
-        PlayGamesPlatform.Instance.ShowAchievementsUI();
+        PlayGamesPlatform.Instance.UnlockAchievement("CgkIsbq28q4cEAIQAg");
+    }
+    public void UnlockAM2()
+    {
+        PlayGamesPlatform.Instance.UnlockAchievement("CgkIsbq28q4cEAIQAw");
+    }
+    public void UnlockAM3()
+    {
+        PlayGamesPlatform.Instance.UnlockAchievement("CgkIsbq28q4cEAIQBA");
+    }
+    public void UnlockAM4()
+    {
+        PlayGamesPlatform.Instance.UnlockAchievement("CgkIsbq28q4cEAIQBQ");
+    }
+    public void UnlockAM5()
+    {
+        PlayGamesPlatform.Instance.UnlockAchievement("CgkIsbq28q4cEAIQBg");
     }
     public void LoadLVL()
     {
@@ -158,5 +213,10 @@ public class UIController : MonoBehaviour
         settingPanel.SetActive(false);
         menuPanel.SetActive(true);
     }
-
+    public void VolumeSlider()
+    {
+        //audsrc.GetComponent<Vol>().ChangeVol(volumeSlider.value);
+        audsrc.volume = volumeSlider.value;
+        Debug.Log("volumeSlider function called");
+    }
 }

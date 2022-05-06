@@ -65,6 +65,6 @@ public class BossHealth : MonoBehaviour
         var deathEff = Instantiate(BossDeathEff, gameObject.transform.position, Quaternion.identity) as GameObject;
         Destroy(gameObject, 2f);
         GameFinishedPanel.SetActive(true);
-        uic.postToLeaderboard(fps.score);
+        uic.postToLeaderboard(fps.score, fps.deathScore);
     }
 }

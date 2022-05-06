@@ -957,6 +957,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1819096163, guid: f0be59a7159549c408619bbffb6945cd, type: 3}
+      propertyPath: audioBoss
+      value: 
+      objectReference: {fileID: 1749180583}
     - target: {fileID: 504594917416615039, guid: f0be59a7159549c408619bbffb6945cd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1039,6 +1043,9 @@ MonoBehaviour:
   settingPanel: {fileID: 766042864}
   menuPanel: {fileID: 120947492}
   mainText: {fileID: 24893083}
+  volumeSlider: {fileID: 916400183}
+  audsrc: {fileID: 934693827}
+  menumusic: {fileID: 8300000, guid: 321d9457227ef4b46a3c4054241d4eb3, type: 3}
 --- !u!4 &631400409
 Transform:
   m_ObjectHideFlags: 0
@@ -1914,8 +1921,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5935737939473387262, guid: 910e732cc79387542819aecde344fd15, type: 3}
-        m_TargetAssemblyTypeName: cameraMovement, Assembly-CSharp
+      - m_Target: {fileID: 631400408}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: VolumeSlider
         m_Mode: 1
         m_Arguments:
@@ -1925,7 +1932,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &929244092 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1819096163, guid: f0be59a7159549c408619bbffb6945cd, type: 3}
@@ -1949,6 +1956,7 @@ GameObject:
   - component: {fileID: 934693825}
   - component: {fileID: 934693824}
   - component: {fileID: 934693823}
+  - component: {fileID: 934693827}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2041,6 +2049,102 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!82 &934693827
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934693822}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.9
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &935712470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,6 +3512,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713748514}
   m_CullTransparentMesh: 1
+--- !u!82 &1749180583 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6794057188495328187, guid: f0be59a7159549c408619bbffb6945cd, type: 3}
+  m_PrefabInstance: {fileID: 619368822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1994175185
 GameObject:
   m_ObjectHideFlags: 0
