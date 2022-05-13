@@ -128,7 +128,7 @@ public class SpiderController : MonoBehaviour
             attackpoint = 0;
             anim.SetTrigger("Death");
             Destroy(Spider, 1.5f);
-            fps.incScore(5);
+            //fps.incScore(5);
         }
     }
 }

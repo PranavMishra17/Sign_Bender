@@ -8,6 +8,7 @@ public class BossHealth : MonoBehaviour
     public float healthEnemy = 500f;
     public float timetodie = 2f;
     public Slider healthBar;
+    public ParticleSystem bossBomb;
     public GameObject BossDeathEff;
     public GameObject GameFinishedPanel;
     //public Animator anim;
@@ -32,17 +33,13 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (healthEnemy < 10f)
-        {
-            Debug.Log("Time to die boss");
-            TimetoDie();
-        }
+
     }
     public void ReduceHealth()
     {
         healthEnemy -= 40f;
         healthBar.value -= 40f;
-        if (healthEnemy < 20f)
+        if (healthEnemy < 10f)
         {
             Debug.Log("Time to die boss");
             TimetoDie();
@@ -58,13 +55,16 @@ public class BossHealth : MonoBehaviour
     public void TimetoDie()
     {
         bctrl.CancelInvoke("Shoot");
+        var deathEff = Instantiate(BossDeathEff, gameObject.transform.position, Quaternion.identity) as GameObject;
+        gameObject.SetActive(false);
 
+        //var deathEf = Instantiate(bossBomb, gameObject.transform.position, Quaternion.identity) as ParticleSystem;
         audio.PlayOneShot(BossDeath);
 
         Destroy(healthBar, timetodie);
-        var deathEff = Instantiate(BossDeathEff, gameObject.transform.position, Quaternion.identity) as GameObject;
+        //var deathEff = Instantiate(BossDeathEff, gameObject.transform.position, Quaternion.identity) as GameObject;
         Destroy(gameObject, 2f);
         GameFinishedPanel.SetActive(true);
-        uic.postToLeaderboard(fps.score, fps.deathScore);
+        //uic.postToLeaderboard(fps.score, fps.deathScore);
     }
 }

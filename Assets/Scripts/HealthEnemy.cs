@@ -46,8 +46,8 @@ public class HealthEnemy : MonoBehaviour
     }
     public void ReduceHealth()
     {
-        healthEnemy -= 60f;
-        healthBar.value -= 0.6f;
+        healthEnemy -= 40f;
+        healthBar.value -= 0.4f;
         if (healthEnemy < 0f)
         {
             if (gameObject.tag == "Tower")

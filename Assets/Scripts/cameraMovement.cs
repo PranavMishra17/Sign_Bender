@@ -190,9 +190,9 @@ public class cameraMovement : MonoBehaviour
                     }
                     else if (t.fingerId == middleFingerID && Time.time >= timeToFire)
                     {
-                        timeToFire = Time.time + 1 / fireRate;
-                        fpsShooter.Shoot();
-                        reticle.SetMaxSize();
+                       // timeToFire = Time.time + 1 / fireRate;
+                        //fpsShooter.Shoot();
+                       // reticle.SetMaxSize();
                     }
                     break;
             }
@@ -349,6 +349,7 @@ public class cameraMovement : MonoBehaviour
         if (!grounded)
         {
             gameObject.transform.position = lastplayerPos;
+            gameObject.GetComponent<Health>().ReduceHealth();
             
         }
     }

@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
             audsrc.volume = 0.7f;
         }
             mainText.text = "";
-        InitializePlayGamesLogin();
+        //InitializePlayGamesLogin();
 
 
 
@@ -143,8 +143,6 @@ public class UIController : MonoBehaviour
     }
     public void LoadLVL()
     {
-        if (Social.localUser.authenticated)
-        {
             if (once)
             {
                 mainText.text = "We recommend you complete the tutorial first.\nPress Play again if you have already.";
@@ -152,41 +150,17 @@ public class UIController : MonoBehaviour
                 once = false;
             }
             else StartCoroutine("loadLevel");
-        }
-        else
-        {
-           
-            mainText.text = "Logging in to Google Play Services";
-            StartCoroutine("fadeText");
-            AuthenticateUser();
-            if (once)
-            {
-                mainText.text = "We recommend you complete the tutorial first.\nPress Play again if you have already.";
-                StartCoroutine("fadeText");
-                once = false;
-            }
-            else StartCoroutine("loadLevel");
-        }
+       
+        
     }
     public void LoadTut()
     {
-        if (Social.localUser.authenticated)
-        {
             SceneManager.LoadScene("Tutorial");
-        }
-        else
-        {
-            mainText.text = "Logging in to Google Play Services";
-            StartCoroutine("fadeText");
-            AuthenticateUser();
-            SceneManager.LoadScene("Tutorial");
-        }
     }
 
     public void QuitApp()
     {
-        StartCoroutine("appQuit");
-        Debug.Log("Quiting Game");
+        Application.Quit();
     }
     IEnumerator fadeText()
     {

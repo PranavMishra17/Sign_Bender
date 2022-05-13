@@ -157,13 +157,7 @@ public class FPSShooter : MonoBehaviour
     {
         score -= 1;
         scoreCounter.text = score.ToString();
-        if (score == 0)
-        {
-            deathPanel.gameObject.GetComponentInChildren<Text>().text = "You ran out of energy";
-            deathPanel.SetActive(true);
-            adBtn2.SetActive(true);
-            adBtn1.SetActive(false);
-        }
+        
     }
 
     public void incScore(int i)
@@ -201,7 +195,7 @@ public class FPSShooter : MonoBehaviour
         StartCoroutine("Done");
         if(deathScore > 10)
         {
-            uic.UnlockAM3();
+           // uic.UnlockAM3();
         }
     }
     public void Revive()

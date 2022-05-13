@@ -10,14 +10,14 @@ public class pauseMenu : MonoBehaviour
     public AudioSource bgaudio;
     public AudioClip pauseMenuMusic;
     public AudioClip gameMusic;
+    public Animator anim;
+    public GameObject startPanel;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -38,5 +38,10 @@ public class pauseMenu : MonoBehaviour
         pausemenuPanel.SetActive(false);
         bgaudio.clip = gameMusic;
         bgaudio.Play();
+    }
+    public void StartGame()
+    {
+        anim.SetBool("End", true);
+        Destroy(startPanel,2f);
     }
 }

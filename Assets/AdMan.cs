@@ -44,7 +44,8 @@ public class AdMan : MonoBehaviour
 
     public void ShowRewardedVideo1()
     {
-        Debug.Log(string.Format("Platform is {0}supported\nUnity Ads {1}initialized", Advertisement.isSupported ? "" : "not ", Advertisement.isInitialized ? "" : "not "));
+        hth.ReviveSequence();
+        /*Debug.Log(string.Format("Platform is {0}supported\nUnity Ads {1}initialized", Advertisement.isSupported ? "" : "not ", Advertisement.isInitialized ? "" : "not "));
         // Check if UnityAds ready before calling Show method:
         if (Advertisement.IsReady("Rewarded_Android"))
         {
@@ -54,21 +55,22 @@ public class AdMan : MonoBehaviour
         else
         {
             Debug.Log("Rewarded video is not ready at the moment! Please try again later!");
-        }
+        }*/
     }
     public void ShowRewardedVideo2()
     {
-        Debug.Log(string.Format("Platform is {0}supported\nUnity Ads {1}initialized", Advertisement.isSupported ? "" : "not ", Advertisement.isInitialized ? "" : "not "));
+        fps.IncreaseScoreReward();
+        //Debug.Log(string.Format("Platform is {0}supported\nUnity Ads {1}initialized", Advertisement.isSupported ? "" : "not ", Advertisement.isInitialized ? "" : "not "));
         // Check if UnityAds ready before calling Show method:
-        if (Advertisement.IsReady("RewardedRevive"))
-        {
-            Advertisement.Show("RewardedRevive");
-            Debug.Log("Ad code is RewardedRevive" );
-        }
-        else
-        {
-            Debug.Log("Rewarded video is not ready at the moment! Please try again later!");
-        }
+       // if (Advertisement.IsReady("RewardedRevive"))
+       // {
+          //  Advertisement.Show("RewardedRevive");
+          //  Debug.Log("Ad code is RewardedRevive" );
+       // }
+       // else
+       // {
+         //   Debug.Log("Rewarded video is not ready at the moment! Please try again later!");
+       // }
     }
     public void ShowBanner()
     {
@@ -112,7 +114,7 @@ public class AdMan : MonoBehaviour
         if (showResult == ShowResult.Finished)
         {
                 hth.ReviveSequence();
-                fps.uic.UnlockAM4();
+                //fps.uic.UnlockAM4();
                 Debug.Log("Reward successfull ");
             }
         else if (showResult == ShowResult.Skipped)
@@ -130,7 +132,7 @@ public class AdMan : MonoBehaviour
             if (showResult == ShowResult.Finished)
             {
                 fps.IncreaseScoreReward();
-                fps.uic.UnlockAM4();
+                //fps.uic.UnlockAM4();
                 Debug.Log("Reward successfull ");
             }
             else if (showResult == ShowResult.Skipped)

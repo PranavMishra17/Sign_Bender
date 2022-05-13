@@ -108,7 +108,7 @@ public class GrpTriggerScript : MonoBehaviour
             {
                 transition.SetActive(true);
                 t9 = true;
-                fps.uic.UnlockAM5();
+                //fps.uic.UnlockAM5();
                 StartCoroutine(LoadScene( "LVL1", 6));
 
                 //LVL complete

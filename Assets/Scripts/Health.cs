@@ -49,6 +49,7 @@ public class Health : MonoBehaviour
     {
         cm.isAlive = true;
         health = 1;
+        fps.score -= 50;
         fps.Revive();
        
     }
